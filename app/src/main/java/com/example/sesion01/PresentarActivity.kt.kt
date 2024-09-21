@@ -26,7 +26,8 @@ class PresentarActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     /*Presentar()
-                    PantallaEventosOrdenado()*/
+                    PantallaEventosOrdenado()
+                    PantallaEventosDos()*/
                     PantallaEventosTres()
                 }
             }
@@ -34,4 +35,29 @@ class PresentarActivity : ComponentActivity() {
 
     }
 
+
+    override fun onStart() {
+        super.onStart()
+        Toast.makeText(this,"Presentar onStart", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Toast.makeText(this,"Presentar onResume", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Toast.makeText(this,"Presentar onPause", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Toast.makeText(this,"Presentar onStop", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Toast.makeText(this,"Presentar onDestroy", Toast.LENGTH_SHORT).show()
+    }
 }
