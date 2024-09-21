@@ -8,6 +8,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.example.sesion01.pantallas.PantallaEventos
+import com.example.sesion01.pantallas.PantallaEventosDos
+import com.example.sesion01.pantallas.PantallaEventosOrdenado
+import com.example.sesion01.pantallas.PantallaEventosTres
 import com.example.sesion01.pantallas.Presentar
 import com.example.sesion01.ui.theme.Sesion01Theme
 
@@ -21,7 +25,9 @@ class PresentarActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Presentar()
+                    /*Presentar()
+                    PantallaEventosOrdenado()*/
+                    PantallaEventosTres()
                 }
             }
         }
