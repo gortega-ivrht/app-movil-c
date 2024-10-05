@@ -37,6 +37,23 @@ fun PantallaPrincipal(){
         }) {
             Text(text = "Continuar", style = MaterialTheme.typography.bodyLarge)
         }
+
+        //sesion6
+        OutlinedButton(onClick = {
+            Log.d("PantallaPrincipal","Click en el botón lista")
+            val intent = Intent(
+                contex,
+                PresentarActivity::class.java
+            )
+            contex.startActivity(intent)
+        }) {
+            Text(text = "Listar", style = MaterialTheme.typography.bodyLarge)
+        }
+
+
+
+
+
     }
     
 }

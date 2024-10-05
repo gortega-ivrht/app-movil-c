@@ -27,4 +27,12 @@ class UserViewModel (private val userRepository: UserRepository) : ViewModel(){
             _userList.value = userRepository.getAllUsers()
         }
     }
+
+    // sesion6:  Filtrar usuarios por nombre
+    fun filterUsersByName (nameFilter:String){
+        viewModelScope.launch(Dispatchers.IO) {
+            _userList.value = userRepository.getUsersFilter(nameFilter)
+        }
+    }
+
 }
