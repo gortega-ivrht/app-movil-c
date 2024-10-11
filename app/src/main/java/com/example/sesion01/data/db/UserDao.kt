@@ -79,4 +79,29 @@ class UserDao (context: Context){
         return users
     }
 
+    fun updateUser(id:Long, newName:String) : Int{
+        val db = dbHelper.readableDatabase
+        val values = ContentValues().apply {
+            put("name",newName)
+        }
+
+        val selection = " id = ?"
+        val selectionArgs = arrayOf(id.toString())
+        return db.update("users",values,selection, selectionArgs)
+
+    }
+
+    fun deleteUser(id: Long): Int{
+        val db = dbHelper.readableDatabase
+        val selection = "id = ?"
+        val selectionArgs = arrayOf(id.toString())
+        return db.delete("users",selection,selectionArgs)
+
+        /*
+        * delete from users where id = 12
+        *
+        * */
+
+    }
+
 }

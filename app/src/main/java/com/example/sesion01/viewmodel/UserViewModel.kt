@@ -35,4 +35,18 @@ class UserViewModel (private val userRepository: UserRepository) : ViewModel(){
         }
     }
 
+    fun updateUser(id:Long, name: String){
+        viewModelScope.launch(Dispatchers.IO) {
+            userRepository.updateUser(id,name)
+            loadUsers()
+        }
+    }
+
+    fun deleteUser(id: Long){
+        viewModelScope.launch(Dispatchers.IO) {
+            userRepository.deleteUser(id)
+            loadUsers()
+        }
+    }
+
 }

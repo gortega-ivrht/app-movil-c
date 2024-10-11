@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import com.example.sesion01.PersistenciaActivity
 import com.example.sesion01.PresentarActivity
 import com.example.sesion01.R
 
@@ -40,14 +41,14 @@ fun PantallaPrincipal(){
 
         //sesion6
         OutlinedButton(onClick = {
-            Log.d("PantallaPrincipal","Click en el botón lista")
+            Log.d("PantallaPrincipal","Persistencia")
             val intent = Intent(
                 contex,
-                PresentarActivity::class.java
+                PersistenciaActivity::class.java
             )
             contex.startActivity(intent)
         }) {
-            Text(text = "Listar", style = MaterialTheme.typography.bodyLarge)
+            Text(text = "Persistencia", style = MaterialTheme.typography.bodyLarge)
         }
 
 
