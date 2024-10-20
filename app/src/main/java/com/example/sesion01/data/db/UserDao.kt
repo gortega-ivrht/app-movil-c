@@ -3,6 +3,7 @@ package com.example.sesion01.data.db
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
+import android.util.Log
 import com.example.sesion01.data.model.User
 
 class UserDao (context: Context){
@@ -30,7 +31,7 @@ class UserDao (context: Context){
             do {
                 val id = cursor.getLong(cursor.getColumnIndexOrThrow("id"))
                 val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
-                users.add(User(id,name))
+                users.add(User(id,name,"holaaa email"))
             }while (cursor.moveToNext())
         }
         cursor.close()
@@ -48,34 +49,40 @@ class UserDao (context: Context){
         //order by id desc
         // gean,pedro, maria, mafer,igean
 
-        val projection = arrayOf("id", "name")
-        val selection = "name LIKE ?"
-        val selectionArgs = arrayOf("$nameFilter%")
-        val sortOrder = "id DESC"
+        try {
+            val projection = arrayOf("id", "name","email","phone")
+            val selection = "name LIKE ?"
+            val selectionArgs = arrayOf("$nameFilter%")
+            val sortOrder = "id DESC"
 
-        val cursor:Cursor = db.query("users",
-                                projection,
-                                selection,
-                                selectionArgs,
-                                null,
-                                null,
-                                sortOrder)
+            val cursor:Cursor = db.query("users",
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                sortOrder)
 
-        if (cursor.moveToFirst()){
-            do {
-                // lógica
-                val id = cursor.getLong(cursor.getColumnIndexOrThrow("id"))
-                val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
+            if (cursor.moveToFirst()){
+                do {
+                    // lógica
+                    val id = cursor.getLong(cursor.getColumnIndexOrThrow("id"))
+                    val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
+                    val email = cursor.getString(cursor.getColumnIndexOrThrow("email"))
+                    val phone = cursor.getString(cursor.getColumnIndexOrThrow("phone"))
+                    //procesar los datos obtenidos
+                    users.add(User(id, name,email,phone))
 
-                //procesar los datos obtenidos
-                users.add(User(id, name))
+                }while (cursor.moveToNext())
 
-            }while (cursor.moveToNext())
+            }
 
+            cursor.close()
+            db.close()
+            return users
+        }catch (e: Exception) {
+            Log.e("DatabaseHelper", "Error: ${e.message}")
         }
-
-        cursor.close()
-        db.close()
         return users
     }
 

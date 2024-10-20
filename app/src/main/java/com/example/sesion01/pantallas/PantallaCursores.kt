@@ -126,6 +126,8 @@ fun UserRow(user: User,
 
         }else{
             Text(text= user.name, modifier = Modifier.weight(2f))
+            Text(text= user.email, modifier = Modifier.weight(2f))
+            Text(text = user.phone, modifier = Modifier.weight(2f))
 
             Button(
                 onClick = {isEditing = true},
